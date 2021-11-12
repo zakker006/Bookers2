@@ -1,15 +1,48 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Bookers2</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+      <title>Bookers2</title>
+      <%= csrf_meta_tags %>
+      <%= csp_meta_tag %>
+      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" rel="stylesheet">
   </head>
-
   <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <a class="navbar-brand" href="/">
+            <span>Bookers</span>
+          </a>
+          <ul class="navbar-nav ml-auto">
+          <% if user_signed_in? %>
+            <li><a class="fas fa-home nav-link text-light" href="/"> Home</a></li>
+            <li><a class="fas fa-users nav-link text-light" href="/"> Users</a></li>
+            <li><a class="fas fa-book-open nav-link text-light" href="/"> Books</a></li>
+            <%= link_to "Log out", destroy_user_session_path, method: :delete, class:"fas fa-sign-out-alt nav-link text-light" %></li>
+          <% else %>
+            <li><a class="fas fa-home nav-link text-light" href="/"> Home</a></li>
+            <li><a class="fas fa-link nav-link text-light" href="/home/about"> About</a></li>
+            <li><%= link_to "Sign up", new_user_registration_path, class:"fas fa-user-plus nav-link text-light" %></li>
+            <li><%= link_to "Log in", new_user_session_path, class:"fas fa-sign-in-alt nav-link text-light" %></li>
+          <% end %>
+          </ul>
+        </div>
+      </nav>
+    </header>
     <%= yield %>
   </body>
+
+
+  <footer>
+    <div class='container mt-5'>
+      <div class='row'>
+        <div class='mx-auto'>
+          <p>CopyRight Infratop.inc</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  </div>
 </html>

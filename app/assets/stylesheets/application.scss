@@ -13,3 +13,17 @@
  *= require_tree .
  *= require_self
  */
+
+@import "bootstrap";
+
+.navbar-nav {
+    display: flex;
+    flex-direction: column;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+
+div.field, div.actions {
+    margin-bottom: 10px;
+}
